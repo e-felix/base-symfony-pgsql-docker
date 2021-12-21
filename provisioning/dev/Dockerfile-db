@@ -1,0 +1,5 @@
+FROM postgres:13.3
+
+EXPOSE 5432
+
+COPY ./provisioning/dev/initdb-extensions.sh /docker-entrypoint-initdb.d/extensions.sh

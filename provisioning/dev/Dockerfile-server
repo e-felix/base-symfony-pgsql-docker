@@ -1,0 +1,23 @@
+FROM php:8.0-fpm
+
+RUN apt-get update && \
+    apt-get install -y wget git zip
+
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
+    install-php-extensions xdebug-^3.0 \
+        @composer \
+        intl \
+        pdo_pgsql \
+        zip
+
+RUN wget https://get.symfony.com/cli/installer -O - | bash
+
+RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+
+RUN symfony self:update -y
+
+COPY . /var/www/server
+
+WORKDIR /var/www/server

@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+    server:
+        build:
+            context: .
+            dockerfile: provisioning/dev/Dockerfile-server
+        container_name: server
+        ports:
+            - 8080:8080
+        volumes:
+            - .:/var/www/inm
+
+    db:
+        build:
+            context: .
+            dockerfile: provisioning/dev/Dockerfile-db
+        restart: always
+        environment:
+            POSTGRES_DB: inm
+            POSTGRES_PASSWORD: password
+        ports:
+            - 5432:5432
