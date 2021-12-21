@@ -1,8 +1,10 @@
 # BASIC SYMFONY/POSTGRESQL DOCKER CONFIGURATION
 
-> With an nginx config file for Heroku deploy
+> With a nginx config file for Heroku deploy
 
 ## Usage
+
+> Prior to running the commands, copy your project in the same folder of the `docker-compose.yml` file.
 
 ### Build images and containers
 ```sh
