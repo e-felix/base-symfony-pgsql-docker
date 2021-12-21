@@ -9,7 +9,7 @@ services:
         ports:
             - 8080:8080
         volumes:
-            - .:/var/www/inm
+            - .:/var/www/server
 
     db:
         build:
@@ -17,7 +17,7 @@ services:
             dockerfile: provisioning/dev/Dockerfile-db
         restart: always
         environment:
-            POSTGRES_DB: inm
+            POSTGRES_DB: server
             POSTGRES_PASSWORD: password
         ports:
             - 5432:5432
